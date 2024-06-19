@@ -1,0 +1,17 @@
+
+services:
+  web:
+    image: webdevops/php-apache-dev:8.3
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+    working_dir: /app
+  ws:
+    image: webdevops/php-apache-dev:8.3
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: php chat_server.php

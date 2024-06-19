@@ -1,0 +1,19 @@
+{
+    "name": "mason88/htmx_chat",
+    "description": "Websockets-based chat in HTMX",
+    "type": "project",
+    "require": {
+        "cboden/ratchet": "^0.4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "HtmxChat\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mason Lee"
+        }
+    ]
+}
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>HTMX Chat</title>
+	<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+	<script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/ws.js"></script>
+	<style>
+		body { font-family: 'Courier New', Courier, monospace; }
+		div { margin: 1em; }
+		#chat_typed {
+			width: 50%;
+			height: 2em;
+		}
+		#chat_history {
+			width: 90%;
+			height: 200px;
+			border: 1px solid #000;
+			overflow: auto;
+		}
+	</style>
+</head>
+<body>
+	<h2>HTMX Chat</h2>
+
+	<div>
+		This demonstrates a working HTMX Websocket usage. It uses Ratchet as Websocket server.
+		Steps to install and run:
+		<ol>
+			<li>composer install</li>
+			<li>docker-compose up -d</li>
+			<li>With web browser, open at least two tabs or windows: http://127.0.0.1/</li>
+			<li>You should see your messages passed between the instances.</li>
+		</ol>
+	</div>
+
+	<div hx-ext="ws" ws-connect="ws://127.0.0.1:8080/chat_server.php">
+		<form id="form" ws-send>
+			<input type="text" id="chat_typed" name="chat_typed" />
+			<input type="submit" value="Send" />
+		</form>
+
+		<div id="chat_history" hx-swap-oob="afterbegin"></div>
+	</div>
+</body>
+</html>
